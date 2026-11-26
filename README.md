@@ -1,5 +1,9 @@
 # Carbonado
 
+[![Versão](https://img.shields.io/github/v/release/RafaelWergilyds/carbonado?label=vers%C3%A3o)](https://github.com/RafaelWergilyds/carbonado/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/RafaelWergilyds/carbonado/total)](https://github.com/RafaelWergilyds/carbonado/releases)
+![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6)
+
 Compressor de vídeo desktop leve e rápido. Você escolhe a **qualidade mínima** e o Carbonado comprime o máximo possível sem passar desse ponto.
 
 - H.264 ou H.265, com GPU NVIDIA (NVENC) e fallback automático para CPU
@@ -10,6 +14,14 @@ Compressor de vídeo desktop leve e rápido. Você escolhe a **qualidade mínima
 - FFmpeg embutido: não é preciso instalar nada
 
 Feito com Rust + Tauri v2 e Svelte 5 + TypeScript.
+
+## Download
+
+**[Baixar para Windows](https://github.com/RafaelWergilyds/carbonado/releases/latest)**: baixe o `Carbonado_x.x.x_x64-setup.exe` e execute.
+
+- Requer Windows 10/11 64-bit.
+- O Windows pode mostrar o aviso do SmartScreen porque o instalador não é assinado. Clique em **Mais informações → Executar assim mesmo**.
+- A aceleração por GPU exige uma placa NVIDIA com driver atualizado. Sem ela, o app usa a CPU.
 
 ## Desenvolvimento
 
@@ -27,6 +39,8 @@ pnpm tauri build                # gerar instaladores (src-tauri/target/release/b
 pnpm check                      # type-check do frontend
 cd src-tauri && cargo test      # testes do backend
 ```
+
+Para publicar uma versão nova, atualize `version` em `package.json` e `src-tauri/tauri.conf.json`, rode `pnpm tauri build` e anexe o instalador a uma [release](https://github.com/RafaelWergilyds/carbonado/releases/new) com a tag `vX.Y.Z`.
 
 ## Estrutura
 
@@ -55,4 +69,4 @@ Presets: Baixa = 35, Equilibrada = 60, Alta = 85.
 
 ## Licença do FFmpeg
 
-A build GPL do FFmpeg traz obrigações da GPL ao distribuir o app. Veja `src-tauri/binaries/FFMPEG-LICENSE.txt`.
+O Carbonado inclui o [FFmpeg](https://ffmpeg.org) (build GPL do [BtbN](https://github.com/BtbN/FFmpeg-Builds)), distribuído sob a [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html). O código-fonte do FFmpeg está em <https://github.com/FFmpeg/FFmpeg>. Veja `src-tauri/binaries/FFMPEG-LICENSE.txt`.
